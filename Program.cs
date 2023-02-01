@@ -11,15 +11,15 @@ namespace BiathlonProject
 
             Console.WriteLine("Print a table? (Y/N)");
 
-            String answer = Console.ReadLine();
+            string answer = Console.ReadLine();
 
-            if (answer.Equals("Y"))
+            if (answer.ToLower().Equals("y"))
             {
-                String[][] table = data.GetTable();
+                string[][] table = data.GetTable();
                 printer.PrintTable(table);
             }
 
-            if (answer.Equals("N"))
+            if (answer.ToLower().Equals("n"))
             {
                 Console.WriteLine(data.GetRow(1));
             }

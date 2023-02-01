@@ -7,34 +7,44 @@ namespace BiathlonProject
 {
     class BiathlonScheduleData
     {
-        private readonly String[][] table =
-        {
-            new String[] { "1", "Feb", "08", "19", "Biathlon World Championships", "Germany" },
-            new String[] { "2", "Mar", "02", "05", "Biathlon World Cup Nove Mesto", "Czech Republic" },
-            new String[] { "3", "Mar", "09", "12", "Biathlon World Cup", "Sweden" },
-            new String[] { "4", "Mar", "16", "19", "Biathlon World Cup Final", "Norway" }
-        };
+        private string[][] table;
 
-        public String[][] GetTable()
+        public BiathlonScheduleData()
+        {
+            table =  new string[][] 
+            {
+                new string[] { "1", "Feb", "08", "19", "Biathlon World Championships", "Germany" },
+                new string[] { "2", "Mar", "02", "05", "Biathlon World Cup", "Czech Republic" },
+                new string[] { "3", "Mar", "09", "12", "Biathlon World Cup", "Sweden" },
+                new string[] { "4", "Mar", "16", "19", "Biathlon World Cup Final", "Norway" }
+            };
+        }
+
+        public BiathlonScheduleData(string[][] table)
+        {
+            this.table = table;
+        }
+
+        public string[][] GetTable()
         {
             return table;
         }
 
-        public String[] GetRow(int number)
+        public string[] GetRow(int number)
         {
-            return (String[])table.GetValue(number - 1);
+            return (string[])table.GetValue(number - 1);
         }
 
-        public String[] GetColumn(int number)
+        public string[] GetColumn(int number)
         {
-            String[] column = new String[table.GetLength(0)];
+            string[] column = new string[table.Length];
 
-            for (int i = 0; i < table.GetLength(0); i++)
+            for (int i = 0; i < table.Length; i++)
             {
-                column[i] = (String) table.GetValue(i, number - 1);
+                column[i] = (string) table.GetValue(i, number - 1);
             }
 
             return column;
-        } 
+        }
     }
 }

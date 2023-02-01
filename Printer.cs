@@ -7,9 +7,9 @@ namespace BiathlonProject
 {
     class Printer
     {
-        public void PrintTable(String[][] table)
+        public void PrintTable(string[][] table)
         {
-            for (int i = 0; i < table.GetLength(0); i++)
+            for (int i = 0; i < table.Length; i++)
             {
                 for (int j = 0; j < table[i].Length; j++)
                 {
