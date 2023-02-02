@@ -19,6 +19,10 @@ namespace BiathlonProject
             {
                 CreateNewEntry();
             }
+            if (answer.Equals("2"))
+            {
+                UpdateEntry();
+            }
         }
 
         public void CreateNewEntry()
@@ -29,7 +33,20 @@ namespace BiathlonProject
 
             InitiateProgramm();
         }
-    }
 
+        public void UpdateEntry()
+        {
+            string[] row = consoleInterface.AskUserToUpdateEntry(data.GetTable());
+
+            if (row == null)
+            {
+                consoleInterface.AskUserToUpdateEntry(data.GetTable());
+            }
+
+            data.UpdateRow(row);
+
+            InitiateProgramm();
+        }
+    }
 
 }

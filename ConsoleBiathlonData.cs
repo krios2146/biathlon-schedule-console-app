@@ -63,5 +63,17 @@ namespace BiathlonProject
             table = table.Concat(new[] { row }).ToArray();
         }
 
+        public void UpdateRow(string[] row)
+        {
+            for (int i = 0; i < table.Length; i++)
+            {
+                if (table[i][0] == row[0])
+                {
+                    table[i] = row;
+                    break;
+                }
+            }
+        }
+
     }
 }

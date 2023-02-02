@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -72,13 +73,78 @@ namespace BiathlonProject
 
             return entry;
         }
-        static bool IsValidMonth(string month)
+
+        public string[] AskUserToUpdateEntry(string[][] table)
+        {
+            Console.WriteLine("Enter the id of the row you want to update: ");
+            string id = Console.ReadLine();
+
+            int rowIndex = -1;
+            for (int i = 0; i < table.Length; i++)
+            {
+                if (table[i][0] == id)
+                {
+                    rowIndex = i;
+                    break;
+                }
+            }
+
+            if (rowIndex == -1)
+            {
+                Console.WriteLine("No row was found with the given id");
+                return null;
+            }
+
+            string[] row = table[rowIndex];
+
+            Console.WriteLine("Enter the number of the field you want to update: ");
+            Console.WriteLine("1. Month");
+            Console.WriteLine("2. Start Day");
+            Console.WriteLine("3. End Day");
+            Console.WriteLine("4. Event Name");
+            Console.WriteLine("5. Location");
+
+            string fieldNumber = Console.ReadLine();
+
+            int fieldIndex;
+            if (!Int32.TryParse(fieldNumber, out fieldIndex) || fieldIndex < 1 || fieldIndex > 5)
+            {
+                Console.WriteLine("Invalid field number");
+                return null;
+            }
+
+            Console.WriteLine("Enter the new value for the field: ");
+            string newValue = Console.ReadLine();
+
+            if (fieldIndex == 1)
+            {
+                while (!IsValidMonth(newValue))
+                {
+                    Console.WriteLine("Invalid Month. Enter Month (Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec): ");
+                    newValue = Console.ReadLine();
+                }
+            }
+
+            if (fieldIndex == 2 || fieldIndex == 3)
+            {
+                while (!IsValidDay(newValue))
+                {
+                    Console.WriteLine("Invalid Day. Enter End Day (1-31): ");
+                    newValue = Console.ReadLine();
+                }
+            }
+
+            row[fieldIndex] = newValue;
+            return row;
+        }
+
+        private static bool IsValidMonth(string month)
         {
             string[] validMonths = new string[] { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
             return Array.Exists(validMonths, element => element == month);
         }
 
-        static bool IsValidDay(string day)
+        private static bool IsValidDay(string day)
         {
             int parsedDay;
             if (!Int32.TryParse(day, out parsedDay))
