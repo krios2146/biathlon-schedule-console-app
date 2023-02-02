@@ -46,5 +46,22 @@ namespace BiathlonProject
 
             return column;
         }
+        public void AddRow(string[] row)
+        {
+            int id = table.Length + 1;
+
+            row[0] = id.ToString();
+
+            for (int i = 2; i <= 3; i++)
+            {
+                if (row[i].Length == 1)
+                {
+                    row[i] = row[i].Insert(0, "0");
+                }
+            }
+
+            table = table.Concat(new[] { row }).ToArray();
+        }
+
     }
 }

@@ -32,6 +32,7 @@ namespace BiathlonProject
                 }
                 Console.WriteLine();
             }
+            Console.WriteLine();
         }
     }
 }

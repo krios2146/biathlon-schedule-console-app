@@ -15,6 +15,21 @@ namespace BiathlonProject
         {
             string answer = consoleInterface.AskUserWhatToDo(data.GetTable());
 
+            if (answer.Equals("1"))
+            {
+                CreateNewEntry();
+            }
+        }
+
+        public void CreateNewEntry()
+        {
+            string[] row = consoleInterface.AskUserForNewEntry();
+
+            data.AddRow(row);
+
+            InitiateProgramm();
         }
     }
+
+
 }
