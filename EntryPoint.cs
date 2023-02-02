@@ -6,7 +6,7 @@ namespace BiathlonProject
     {
         static void Main(string[] args)
         {
-            ProgrammLogic programm = new ProgrammLogic();
+            ConsoleLogic programm = new ConsoleLogic();
             programm.InitiateProgramm();
         }
     }

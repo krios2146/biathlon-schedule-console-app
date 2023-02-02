@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace BiathlonProject
 {
-    class ProgrammLogic
+    class ConsoleLogic
     {
         private ConsoleInterface consoleInterface = new ConsoleInterface();
-        private BiathlonScheduleData data = new BiathlonScheduleData();
+        private ConsoleBiathlonData data = new ConsoleBiathlonData();
 
         public void InitiateProgramm()
         {

@@ -8,7 +8,7 @@ namespace BiathlonProject
 {
     class ConsoleInterface
     {
-        Printer printer = new Printer();
+        ConsolePrinter printer = new ConsolePrinter();
 
         public string AskUserWhatToDo(string[][] table)
         {

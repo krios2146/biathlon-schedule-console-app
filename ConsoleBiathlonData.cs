@@ -5,11 +5,11 @@ using System.Text;
 
 namespace BiathlonProject
 {
-    class BiathlonScheduleData
+    class ConsoleBiathlonData
     {
         private string[][] table;
 
-        public BiathlonScheduleData()
+        public ConsoleBiathlonData()
         {
             table =  new string[][] 
             {
@@ -20,7 +20,7 @@ namespace BiathlonProject
             };
         }
 
-        public BiathlonScheduleData(string[][] table)
+        public ConsoleBiathlonData(string[][] table)
         {
             this.table = table;
         }
