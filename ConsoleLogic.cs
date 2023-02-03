@@ -23,6 +23,10 @@ namespace BiathlonProject
             {
                 UpdateEntry();
             }
+            if (answer.Equals("3"))
+            {
+                DeleteEntry();
+            }
         }
 
         public void CreateNewEntry()
@@ -44,6 +48,15 @@ namespace BiathlonProject
             }
 
             data.UpdateRow(row);
+
+            InitiateProgramm();
+        }
+
+        public void DeleteEntry()
+        {
+            int id = consoleInterface.AskUserWhatEntryToDelete(data.GetTable());
+
+            data.DeleteRow(id);
 
             InitiateProgramm();
         }

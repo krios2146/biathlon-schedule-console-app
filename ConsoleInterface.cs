@@ -138,6 +138,19 @@ namespace BiathlonProject
             return row;
         }
 
+        public int AskUserWhatEntryToDelete(string[][] table)
+        {
+            Console.WriteLine("Enter the ID of the entry you want to delete: ");
+            string input = Console.ReadLine();
+
+            while (!IsValidId(input, table))
+            {
+                Console.WriteLine("Invalid input. Please enter a valid entry ID.");
+                input = Console.ReadLine();
+            }
+            return Int32.Parse(input);
+        }
+
         private static bool IsValidMonth(string month)
         {
             string[] validMonths = new string[] { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
@@ -152,6 +165,15 @@ namespace BiathlonProject
                 return false;
             }
             return parsedDay >= 1 && parsedDay <= 31;
+        }
+
+        private static bool IsValidId(string input, string[][] table)
+        {
+            if (Int32.TryParse(input, out int result) && result > 0 && result <= table.Length)
+            {
+                return true;
+            }
+            return false;
         }
 
     }

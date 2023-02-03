@@ -75,5 +75,28 @@ namespace BiathlonProject
             }
         }
 
+        public void DeleteRow(int id)
+        {
+            int indexToRemove = -1;
+
+            for (int i = 0; i < table.Length; i++)
+            {
+                if (table[i][0].Equals(id.ToString()))
+                {
+                    indexToRemove = i;
+                    break;
+                }
+            }
+
+            if (indexToRemove != -1)
+            {
+                for (int i = indexToRemove; i < table.Length - 1; i++)
+                {
+                    table[i] = table[i + 1];
+                }
+
+                Array.Resize(ref table, table.Length - 1);
+            }
+        }
     }
 }
