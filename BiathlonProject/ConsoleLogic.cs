@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BiathlonProject
 {
-    class ConsoleLogic
+    public class ConsoleLogic
     {
         private ConsoleInterface consoleInterface = new ConsoleInterface();
         private ConsoleBiathlonData data = new ConsoleBiathlonData();
@@ -15,17 +15,22 @@ namespace BiathlonProject
         {
             string answer = consoleInterface.AskUserWhatToDo(data.GetTable());
 
-            if (answer.Equals("1"))
+            switch (answer)
             {
-                CreateNewEntry();
-            }
-            if (answer.Equals("2"))
-            {
-                UpdateEntry();
-            }
-            if (answer.Equals("3"))
-            {
-                DeleteEntry();
+                case "1":
+                    CreateNewEntry();
+                    break;
+
+                case "2":
+                    UpdateEntry();
+                    break;
+
+                case "3":
+                    DeleteEntry();
+                    break;
+
+                default:
+                    break;
             }
         }
 

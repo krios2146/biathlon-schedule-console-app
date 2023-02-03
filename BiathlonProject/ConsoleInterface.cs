@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BiathlonProject
 {
-    class ConsoleInterface
+    public class ConsoleInterface
     {
         ConsolePrinter printer = new ConsolePrinter();
 
