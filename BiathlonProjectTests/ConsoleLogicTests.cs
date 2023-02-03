@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BiathlonProjectTests1
+namespace BiathlonProjectTests
 {
     internal class ConsoleLogicTests
     {
