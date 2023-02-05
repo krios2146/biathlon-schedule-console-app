@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BiathlonProject
 {
-    interface IBiathlonData
+    public interface IBiathlonData
     {
         string[][] GetTable();
         string[] GetRow(int number);
