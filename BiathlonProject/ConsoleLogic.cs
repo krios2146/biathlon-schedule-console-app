@@ -8,8 +8,8 @@ namespace BiathlonProject
 {
     public class ConsoleLogic
     {
-        private ConsoleInterface consoleInterface = new ConsoleInterface();
-        private ConsoleBiathlonData data = new ConsoleBiathlonData();
+        private ConsoleInterface consoleInterface;
+        private ConsoleBiathlonData data;
 
         public void InitiateProgramm()
         {

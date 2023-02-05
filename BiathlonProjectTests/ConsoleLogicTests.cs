@@ -5,34 +5,84 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.VisualStudio.TestPlatform.TestHost;
+using Moq;
 
 namespace BiathlonProject.Tests
 {
-    [TestClass()]
+    [TestClass]
     public class ConsoleLogicTests
     {
-        [TestMethod()]
-        public void InitiateProgrammTest()
+
+        private ConsoleLogic program;
+        private Mock<IBiathlonData> dataMock;
+        private Mock<IConsoleInterface> consoleInterfaceMock;
+
+        [TestInitialize]
+        public void TestInitialize()
         {
-            Assert.Fail();
+            dataMock = new Mock<IBiathlonData>();
+            consoleInterfaceMock = new Mock<IConsoleInterface>();
+            program = new ConsoleLogic();
         }
 
-        [TestMethod()]
-        public void CreateNewEntryTest()
+        [TestMethod]
+        public void WhenAnswerIs1_CreateNewEntryIsCalled()
         {
-            Assert.Fail();
+            // Arrange
+            string answer = "1";
+            consoleInterfaceMock.Setup(c => c.AskUserWhatToDo(It.IsAny<string[][]>())).Returns(answer);
+
+            // Act
+            program.InitiateProgramm();
+
+            // Assert
+            consoleInterfaceMock.Verify(c => c.AskUserWhatToDo(It.IsAny<string[][]>()), Times.Once());
+            dataMock.Verify(d => d.AddRow(It.IsAny<string[]>()), Times.Once());
         }
 
-        [TestMethod()]
-        public void UpdateEntryTest()
+        [TestMethod]
+        public void WhenAnswerIs2_UpdateEntryIsCalled()
         {
-            Assert.Fail();
+            // Arrange
+            string answer = "2";
+            consoleInterfaceMock.Setup(c => c.AskUserWhatToDo(It.IsAny<string[][]>())).Returns(answer);
+
+            // Act
+            program.InitiateProgramm();
+
+            // Assert
+            consoleInterfaceMock.Verify(c => c.AskUserWhatToDo(It.IsAny<string[][]>()), Times.Once());
+            dataMock.Verify(d => d.AddRow(It.IsAny<string[]>()), Times.Once());
         }
 
-        [TestMethod()]
-        public void DeleteEntryTest()
+        [TestMethod]
+        public void WhenAnswerIs3_DeleteEntryIsCalled()
         {
-            Assert.Fail();
+            // Arrange
+            string answer = "3";
+            consoleInterfaceMock.Setup(c => c.AskUserWhatToDo(It.IsAny<string[][]>())).Returns(answer);
+
+            // Act
+            program.InitiateProgramm();
+
+            // Assert
+            consoleInterfaceMock.Verify(c => c.AskUserWhatToDo(It.IsAny<string[][]>()), Times.Once());
+            dataMock.Verify(d => d.AddRow(It.IsAny<string[]>()), Times.Once());
+        }
+
+        [TestMethod]
+        public void WhenAnswerIs0_Exiting()
+        {
+            // Arrange
+            string answer = "0";
+            consoleInterfaceMock.Setup(c => c.AskUserWhatToDo(It.IsAny<string[][]>())).Returns(answer);
+
+            // Act
+            program.InitiateProgramm();
+
+            // Assert
+            consoleInterfaceMock.Verify(c => c.AskUserWhatToDo(It.IsAny<string[][]>()), Times.Once());
         }
     }
 }

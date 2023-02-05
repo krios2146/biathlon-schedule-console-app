@@ -10,7 +10,7 @@ namespace BiathlonProject
 {
     public class ConsoleInterface : IConsoleInterface
     {
-        ConsolePrinter printer = new ConsolePrinter();
+        private ConsolePrinter printer = new ConsolePrinter();
 
         public string AskUserWhatToDo(string[][] table)
         {
@@ -174,6 +174,11 @@ namespace BiathlonProject
                 return true;
             }
             return false;
+        }
+
+        public void SetPrinter(ConsolePrinter consolePrinter)
+        {
+            this.printer = consolePrinter;
         }
 
     }

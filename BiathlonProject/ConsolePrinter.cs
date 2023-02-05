@@ -5,7 +5,7 @@ using System.Text;
 
 namespace BiathlonProject
 {
-    class ConsolePrinter
+    public class ConsolePrinter
     {
         public void PrintTable(string[][] table)
         {

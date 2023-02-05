@@ -5,7 +5,7 @@ using System.Text;
 
 namespace BiathlonProject
 {
-    class ConsoleBiathlonData : IBiathlonData
+    public class ConsoleBiathlonData : IBiathlonData
     {
         private string[][] table;
 
